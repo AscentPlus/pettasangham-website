@@ -123,7 +123,7 @@ h1, h2, h3, h4 {
 /* --- 5. Hero Section --- */
 .hero {
     height: 80vh;
-    background-image: url('./images/amzimg.jpg');
+    background-image: url('/amzimg.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
