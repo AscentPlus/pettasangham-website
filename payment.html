@@ -7,37 +7,35 @@
 </head>
 <body>
   <h2>Pay with Razorpay</h2>
-  <button id="rzp-button">Pay ₹100</button>
+  <button id="payBtn">Pay Dummy ₹100</button>
 
-  <!-- Razorpay Standard Checkout Script -->
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-  <script>
-    document.getElementById("rzp-button").onclick = function () {
-      var options = {
-        key: "YOUR_KEY_ID_HERE", // Replace with your Razorpay Test Key ID
-        amount: 10000, // Amount in paise (10000 = ₹100)
-        currency: "INR",
-        name: "My Demo Store",
-        description: "Test Payment",
-        image: "https://example.com/your_logo", // Optional
-        handler: function (response) {
-          alert(
-            "Payment successful!\nPayment ID: " + response.razorpay_payment_id
-          );
+<script>
+document.getElementById('payBtn').onclick = function (e) {
+    var options = {
+        "key": "rzp_test_Rl3d5uy0amWVIU", // Your Test Key ID
+        "amount": "10000", // 100 INR
+        "currency": "INR",
+        "name": "Test Payment",
+        "description": "Dummy Testing",
+        "handler": function (response) {
+            alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
         },
-        prefill: {
-          name: "Test User",
-          email: "test@example.com",
-          contact: "9999999999",
+        "prefill": {
+            "name": "Test User",
+            "email": "test@example.com",
+            "contact": "9999999999"
         },
-        theme: {
-          color: "#3399cc",
-        },
-      };
-      var rzp = new Razorpay(options);
-      rzp.open();
+        "theme": {
+            "color": "#3399cc"
+        }
     };
-  </script>
+    var rzp = new Razorpay(options);
+    rzp.open();
+    e.preventDefault();
+}
+</script>
+
 </body>
 </html>
