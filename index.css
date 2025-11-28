@@ -140,7 +140,7 @@ h1, h2, h3, h4 {
 /* Optional: Define the initial background using a CSS variable (or keep it as is) */
 .hero {
     /* Set initial background */
-   background-image: var(--current-bg, url('timg3.jpg'));
+   background-image: var(--current-bg, url('amz2.jpg'));
 }
 
 .hero-overlay {
@@ -792,101 +792,99 @@ footer {
 
 
 /* --- OFFICE BEARERS SECTION STYLES --- */
-/* Add this to reduce the top/bottom space of the whole section */
+/* --- COMPACT OFFICE BEARERS STYLES --- */
+
+/* 1. Reduce Section Height */
 #bearers {
-    padding: 20px 5%; /* Changed from 80px to 40px */
+    padding: 30px 5%; /* Minimized top/bottom padding */
+    background-color: var(--bg-cream); /* Matches website flow */
 }
 
-/* 1. Grid Layout for the Cards */
+/* 2. Compact Grid Layout (Flexbox) */
 .bearers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    margin-top: 40px;
-    justify-content: center;
-    padding-left: 20px;
+    display: flex; /* Keeps items in a tight row */
+    justify-content: center; /* Centers the 3 cards */
+    flex-wrap: wrap; /* Allows stacking on very small screens */
+    gap: 20px; /* Small gap between cards */
+    margin-top: 20px;
 }
 
-/* 2. Individual Card Style */
+/* 3. Individual Compact Card */
 .bearer-card {
-    background: #e9c89e;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05); /* Soft shadow */
-    overflow: hidden;
+    background: #ffffff;
+    width: 220px; /* Fixed small width to save space */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-top: 5px solid var(--primary-color); /* Saffron top border */
+    padding: 15px;
+    border: 1px solid #e0e0e0; /* Subtle border */
+    transition: transform 0.2s ease, border-color 0.2s;
     position: relative;
-    padding-bottom: 30px;
-    /* Add this line to limit the maximum width */
-    max-width: 280px; 
-    /* margin: 0 auto;  */
-    /* Keeps it centered */
-    transform: translateX(10px);
+    overflow: hidden;
 }
 
-/* Hover Effect: Lifts the card slightly */
-/* .bearer-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-} */
+/* Attractive Hover Effect */
+.bearer-card:hover {
+    transform: translateY(-3px); /* Slight lift */
+    border-color: var(--secondary-color); /* Border turns gold on hover */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
 
-/* 3. Image Container (Circular) */
+/* Optional: Saffron top strip inside the card */
+.bearer-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* 4. Small Circular Image */
 .bearer-img-box {
-    width: 120px;
-    height: 120px;
-    margin: 20px auto 20px; /* Center horizontally */
-    position: relative;
+    width: 100px;  /* Much smaller image */
+    height: 100px;
+    margin: 0 auto 10px; /* Centered */
 }
 
 .bearer-img-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%; /* Makes image circular */
-    border: 4px solid var(--secondary-color); /* Gold border around photo */
-    padding: 3px; /* Space between photo and border */
-    background-color: white;
+    border-radius: 0%;
+    border: 2px solid var(--secondary-color); /* Gold ring */
+    padding: 2px;
 }
 
-/* 4. Text Styling */
+/* 5. Typography Adjustments */
 .bearer-info h3 {
-    font-size: 1.4rem;
+    font-size: 1rem; /* Smaller name */
     color: var(--text-color);
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     font-weight: 700;
 }
 
 .bearer-info .role {
     display: block;
-    font-family: var(--font-body);
-    color: var(--primary-color); /* Saffron color for the Role */
-    font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.75rem; /* Small, crisp role text */
+    color: var(--primary-color);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
 }
 
-/* A small visual divider line */
-.bearer-info .divider {
-    width: 50px;
-    height: 2px;
-    background-color: #eee;
-    margin: 15px auto;
+/* Compact Contact Details */
+.contact-compact p {
+    font-size: 0.8rem; /* Small readable text */
+    color: #555;
+    margin-bottom: 4px;
+    line-height: 1.3;
 }
 
-.bearer-info p {
-    font-size: 0.95rem;
-    color: #383838;
-    margin-bottom: 8px;
-}
-
-.bearer-info i {
+.contact-compact i {
     color: var(--secondary-color);
-    margin-right: 8px;
-    width: 15px;
+    margin-right: 5px;
+    font-size: 0.8rem;
 }
-
 
 
 
@@ -980,3 +978,109 @@ footer {
         display: none; 
     }
 }
+
+/* /////////////////////////////////////////////// */
+/* --- EVENTS JOURNEY SECTION STYLES --- */
+
+#events-journey {
+    background-color: #e2d4c5dc; /* Clean white background */
+}
+
+.events-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 60px; /* Space between each event row */
+}
+
+/* 1. The Container for each event */
+.event-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 20px;
+    border-radius: 10px;
+    /* Optional: Slight hover effect for the whole row */
+    transition: transform 0.3s ease;
+}
+
+.event-row:hover {
+    transform: translateY(-5px); /* Gentle lift */
+}
+
+/* 2. REVERSE CLASS: This switches the Image to the Right side */
+.event-row.reverse {
+    flex-direction: row-reverse;
+}
+
+/* 3. Image Box */
+.event-image {
+    flex: 1; /* Takes up 50% width */
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 3px solid var(--secondary-color); /* Gold border */
+}
+
+.event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.event-image:hover img {
+    transform: scale(1.05); /* Zoom image on hover */
+}
+
+/* 4. Text Content */
+.event-details {
+    flex: 1; /* Takes up 50% width */
+}
+
+.event-details h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Underline for the headings */
+.event-details h3::after {
+    content: '';
+    width: 50%;
+    height: 3px;
+    background: var(--secondary-color);
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.event-details p {
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+    .event-row, 
+    .event-row.reverse {
+        flex-direction: column; /* Stack everything vertically on mobile */
+        gap: 20px;
+    }
+    
+    .event-image {
+        width: 100%; /* Full width image */
+        height: 250px;
+    }
+    
+    .event-details h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* /////////////////////////////////////////////// */
