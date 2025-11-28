@@ -140,7 +140,7 @@ h1, h2, h3, h4 {
 /* Optional: Define the initial background using a CSS variable (or keep it as is) */
 .hero {
     /* Set initial background */
-   /* background-image: var(--current-bg, url('./images/timg3.jpg')); */
+   background-image: var(--current-bg, url('timg3.jpg'));
 }
 
 .hero-overlay {
