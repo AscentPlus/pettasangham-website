@@ -1,45 +1,130 @@
 //hero
 // --- Hero Section Background Carousel ---
-const hero = document.querySelector('.hero');
+// const hero = document.querySelector('.hero');
 
-// 1. Define your image array (update these paths as necessary)
-const heroImages = [
-    'timg3.jpg',
-    'amz2.jpg', 
-    'amz3.jpg'
+// // 1. Define your image array (update these paths as necessary)
+// const heroImages = [
+//     'timg3.jpg',
+//     'amz2.jpg', 
+//     'amz3.jpg'
+// ];
+
+// let currentImageIndex = 0;
+// const intervalTime = 5000; // 5000 milliseconds = 5 seconds transition interval
+
+// function changeHeroBackground() {
+//     // 2. Increment the index and loop back to 0 if it exceeds the array length
+//     currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+    
+//     const nextImage = heroImages[currentImageIndex];
+    
+//     // 3. Preload the next image to prevent flickering
+//     const img = new Image();
+//     img.src = nextImage;
+    
+//     img.onload = () => {
+//         // 4. Once the image is loaded, update the background-image property
+//         hero.style.backgroundImage = `url('${nextImage}')`;
+//     };
+    
+//     // Fallback: If image fails to load, still switch (optional)
+//     img.onerror = () => {
+//         hero.style.backgroundImage = `url('${nextImage}')`; 
+//         console.error(`Failed to load background image: ${nextImage}`);
+//     };
+// }
+
+// // 5. Set the interval to automatically switch the background
+// // Note: The first image is set via CSS/initial setup, so we start the interval immediately.
+// // We call the function first to immediately start the cycle at image 2.
+// setInterval(changeHeroBackground, intervalTime);
+
+
+
+// --- LIVE CALENDAR WIDGET SCRIPT ---
+
+const date = new Date();
+const currentMonthYear = document.getElementById("month-year");
+const calendarGrid = document.getElementById("calendar-grid");
+const prevBtn = document.getElementById("prev-month");
+const nextBtn = document.getElementById("next-month");
+
+// 1. Define Important Temple Events (Month is 0-indexed: Jan=0, Feb=1, etc.)
+const templeEvents = [
+    { month: 0, day: 11, title: "Petta Thullal" },      // Jan 11
+    { month: 0, day: 14, title: "Makaravilakku" },      // Jan 14
+    { month: 11, day: 22, title: "Mandala Pooja" },     // Dec 22
+    // Add more dates here...
 ];
 
-let currentImageIndex = 0;
-const intervalTime = 5000; // 5000 milliseconds = 5 seconds transition interval
+function renderCalendar() {
+    date.setDate(1); // Set to first day of the current viewing month
 
-function changeHeroBackground() {
-    // 2. Increment the index and loop back to 0 if it exceeds the array length
-    currentImageIndex = (currentImageIndex + 1) % heroImages.length;
-    
-    const nextImage = heroImages[currentImageIndex];
-    
-    // 3. Preload the next image to prevent flickering
-    const img = new Image();
-    img.src = nextImage;
-    
-    img.onload = () => {
-        // 4. Once the image is loaded, update the background-image property
-        hero.style.backgroundImage = `url('${nextImage}')`;
-    };
-    
-    // Fallback: If image fails to load, still switch (optional)
-    img.onerror = () => {
-        hero.style.backgroundImage = `url('${nextImage}')`; 
-        console.error(`Failed to load background image: ${nextImage}`);
-    };
+    const month = date.getMonth();
+    const year = date.getFullYear();
+
+    // Set Header Text
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    currentMonthYear.innerText = `${months[month]} ${year}`;
+
+    // Calculate days
+    const lastDay = new Date(year, month + 1, 0).getDate(); // Last day of current month
+    const prevLastDay = new Date(year, month, 0).getDate(); // Last day of prev month
+    const firstDayIndex = date.getDay(); // Day of week the month starts on (0-6)
+    const lastDayIndex = new Date(year, month + 1, 0).getDay(); // Day of week the month ends on
+    const nextDays = 7 - lastDayIndex - 1; // Days to fill from next month
+
+    let days = "";
+
+    // 1. Previous Month's fading days
+    for (let x = firstDayIndex; x > 0; x--) {
+        days += `<div class="empty">${prevLastDay - x + 1}</div>`;
+    }
+
+    // 2. Current Month's days
+    for (let i = 1; i <= lastDay; i++) {
+        // Check if it is TODAY
+        const isToday = i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear() ? "today" : "";
+        
+        // Check if it is an EVENT DATE
+        let isEvent = "";
+        let eventTitle = "";
+        
+        templeEvents.forEach(evt => {
+            if (evt.day === i && evt.month === month) {
+                isEvent = "event-date";
+                eventTitle = evt.title;
+            }
+        });
+
+        // Add the HTML for the day
+        // We add a 'title' attribute so hovering shows the event name
+        days += `<div class="${isToday} ${isEvent}" title="${eventTitle}">${i}</div>`;
+    }
+
+    // 3. Next Month's fading days
+    for (let j = 1; j <= nextDays; j++) {
+        days += `<div class="empty">${j}</div>`;
+    }
+
+    calendarGrid.innerHTML = days;
 }
 
-// 5. Set the interval to automatically switch the background
-// Note: The first image is set via CSS/initial setup, so we start the interval immediately.
-// We call the function first to immediately start the cycle at image 2.
-setInterval(changeHeroBackground, intervalTime);
+// Button Listeners
+prevBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // Prevent menu from closing when clicking buttons
+    date.setMonth(date.getMonth() - 1);
+    renderCalendar();
+});
 
+nextBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    date.setMonth(date.getMonth() + 1);
+    renderCalendar();
+});
 
+// Initial Load
+renderCalendar();
 
         // --- CAROUSEL LOGIC ---
 const track = document.querySelector('.slider-track');
