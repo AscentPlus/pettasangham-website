@@ -83,7 +83,7 @@ h1, h2, h3, h4 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 2%;
+    padding: 10px 2%;
     background-color: var(--bg-white);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: sticky;
@@ -96,6 +96,16 @@ h1, h2, h3, h4 {
     font-size: 1.7rem;
     font-weight: 700;
     color: var(--primary-color);
+    text-align: center;
+    /* margin: 0px 5px; */
+    margin-right: 10px;
+}
+/* Ensure the logo image maintains the exact size of the previous Font Awesome icon */
+.logo-icon {
+    height: 65px;
+    width: auto;
+    vertical-align: middle; 
+    margin-right: 2px;
 }
 
 .nav-links {
@@ -366,6 +376,10 @@ footer {
     .about-grid {
         grid-template-columns: 1fr;
     }
+
+    .navbar {
+    padding: 0px 2%;
+}
 }
 
 
@@ -902,7 +916,20 @@ footer {
     margin-right: 5px;
     font-size: 0.8rem;
 }
+/* --- Footer Contact Link Styling --- */
 
+/* Ensure links in the footer inherit color and remove the default underline */
+.footer-col p a {
+    color: inherit; 
+    text-decoration: none; 
+    transition: color 0.3s;
+    /* Optional: display: inline-block; for better click target on touch screens */
+}
+
+/* Add a hover effect for user feedback */
+.footer-col  a:hover {
+    color: var(--secondary-color); /* Uses your theme's Golden Yellow color on hover */
+}
 
 
 /* --- LEGACY / TRIBUTE SECTION STYLES --- */
@@ -1032,11 +1059,11 @@ footer {
 
 /* 3. Image Box */
 .event-image {
-    flex: 1; /* Takes up 50% width */
-    height: 300px;
+    flex: 0.65; /* Takes up 25% width */
+    height: 280px;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     border: 3px solid var(--secondary-color); /* Gold border */
 }
 
@@ -1252,3 +1279,73 @@ footer {
 }
 }
 
+/* --- EXECUTIVE COMMITTEE (Small Card) STYLES --- */
+
+/* 1. Grid Container for 12 Members */
+.aux-bearers-grid {
+    display: grid;
+    /* Default: 6 columns for Desktop */
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee; /* Visual separator from main bearers */
+}
+
+/* 2. Individual Member Card */
+.aux-bearer-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* 3. Small Image Container (Picture Size) */
+.aux-bearer-img-box {
+    width: 70px; /* Smaller image size */
+    height: 70px;
+    margin-bottom: 5px;
+    border-radius: 50%;
+    overflow: hidden;
+    /* Optional: Small border using theme color */
+    border: 3px solid var(--secondary-color); 
+}
+
+.aux-bearer-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 4. Name Styling */
+.aux-bearer-card p {
+    font-size: 0.9rem; /* Smaller font size for name */
+    font-weight: 500;
+    color: var(--text-color);
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* --- RESPONSIVENESS for Mobile/Tablet --- */
+@media (max-width: 1024px) {
+    /* Tablet (e.g., 4 members per row) */
+    .aux-bearers-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    /* Mobile (e.g., 3 members per row, as requested) */
+    .aux-bearers-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px; /* Reduce gap to fit on smaller screens */
+    }
+    .aux-bearer-img-box {
+        width: 60px; /* Slightly smaller image on mobile */
+        height: 60px;
+    }
+    .aux-bearer-card p {
+        font-size: 0.8rem; /* Even smaller font on mobile */
+    }
+}

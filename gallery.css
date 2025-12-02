@@ -66,7 +66,7 @@ h1, h2, h3, h4 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 2%;
+    padding: 5px 2%;
     background-color: var(--bg-white);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: sticky;
@@ -79,6 +79,16 @@ h1, h2, h3, h4 {
     font-size: 1.7rem;
     font-weight: 700;
     color: var(--primary-color);
+    text-align: center;
+    /* margin: 0px 5px; */
+    margin-right: 10px;
+}
+/* Ensure the logo image maintains the exact size of the previous Font Awesome icon */
+.logo-icon {
+    height: 65px;
+    width: auto;
+    vertical-align: middle; 
+    margin-right: 2px;
 }
 
 .nav-links {
@@ -155,7 +165,20 @@ footer {
     padding-top: 20px;
     font-size: 0.9rem;
 }
+/* --- Footer Contact Link Styling --- */
 
+/* Ensure links in the footer inherit color and remove the default underline */
+.footer-col p a {
+    color: inherit; 
+    text-decoration: none; 
+    transition: color 0.3s;
+    /* Optional: display: inline-block; for better click target on touch screens */
+}
+
+/* Add a hover effect for user feedback */
+.footer-col  a:hover {
+    color: var(--secondary-color); /* Uses your theme's Golden Yellow color on hover */
+}
 /* --- 10. Mobile Responsiveness --- */
 @media (max-width: 768px) {
     .nav-links {
