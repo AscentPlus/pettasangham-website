@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ambalapuzha Yogam Petta Sangham</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="./index.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -149,6 +150,29 @@
                     <!-- <a href="./history.html" class="text-link">Read Full Story &rarr;</a> -->
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <section id="aazhi-table-section" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Aazhipooja Schedule 2025-26</h2>
+            
+            <!-- The Table Container -->
+            <div class="responsive-table-wrapper">
+                <table class="aazhi-table" id="dynamic-aazhi-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Location (Name)</th>
+                            <th>Area</th>
+                            <th>Map</th>
+                        </tr>
+                    </thead>
+                    <tbody id="aazhi-table-body">
+                        <!-- JavaScript will insert rows here automatically -->
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
@@ -447,7 +471,6 @@
         </div>
     </section>
 
-
     <section id="bearers">
         <div class="container">
             <h2 class="section-title">Committee Members</h2>
@@ -463,7 +486,7 @@
                         <span class="role">President</span>
                         <div class="contact-compact">
                             <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
-                            <p><i class="fas fa-envelope"></i> president@example.com</p>
+                            <!-- <p><i class="fas fa-envelope"></i> president@example.com</p> -->
                         </div>
                     </div>
                 </div>
@@ -477,7 +500,7 @@
                         <span class="role">Secretary</span>
                         <div class="contact-compact">
                             <p><i class="fas fa-phone-alt"></i> +91 98765 43211</p>
-                            <p><i class="fas fa-envelope"></i> secretary@example.com</p>
+                            <!-- <p><i class="fas fa-envelope"></i> secretary@example.com</p> -->
                         </div>
                     </div>
                 </div>
@@ -488,104 +511,112 @@
                     </div>
                     <div class="bearer-info">
                         <h3>Sri. Name Surname</h3>
-                        <span class="role">Vice President</span>
+                        <span class="role">Treasurer</span>
                         <div class="contact-compact">
                             <p><i class="fas fa-phone-alt"></i> +91 98765 43212</p>
-                            <p><i class="fas fa-envelope"></i> vp@example.com</p>
+                            <!-- <p><i class="fas fa-envelope"></i> vp@example.com</p> -->
                         </div>
                     </div>
                 </div>
 
             </div>
+            <br>
+            <div class="committee-members-wrapper">
+                <!-- <h3 class="subsection-title" style="text-align: center; margin-top: 40px; margin-bottom: 20px; font-size: 1.5rem;">Executive Committee</h3> -->
+                
+                <div class="committee-grid">
+                    <div class="committee-card">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Member 1">
+                        <p>Sri. Member One</p>
+                    </div>
+                    
+                    <div class="committee-card">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Member 2">
+                        <p>Sri. Member Two</p>
+                    </div>
+
+                    <div class="committee-card">
+                        <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=150&q=80" alt="Member 3">
+                        <p>Sri. Member Three</p>
+                    </div>
+
+                    <div class="committee-card">
+                        <img src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?auto=format&fit=crop&w=150&q=80" alt="Member 4">
+                        <p>Sri. Member Four</p>
+                    </div>
+
+                    <div class="committee-card">
+                        <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&w=150&q=80" alt="Member 5">
+                        <p>Sri. Member Five</p>
+                    </div>
+
+                    <div class="committee-card">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Member 6">
+                        <p>Smt. Member Six</p>
+                    </div>
+
+                    <div class="committee-card">
+                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=150&q=80" alt="Member 7">
+                        <p>Sri. Member Seven</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <h3 class="section-subtitle" style="text-align: center; margin-top: 50px;">Executive Committee Members</h3>
+        <h3 class="section-subtitle" style="text-align: center; margin-top: 30px;">Karaperiyon</h3>
 
-<div class="aux-bearers-grid">
-    <div class="aux-bearer-card">
-        <div class="aux-bearer-img-box">
-            <img src="member-1.jpg" alt="EC Member 1">
-        </div>
-        <p>Sri. Name A</p>
-    </div>
-    
-    <div class="aux-bearer-card">
-        <div class="aux-bearer-img-box">
-            <img src="member-2.jpg" alt="EC Member 2">
-        </div>
-        <p>Sri. Name B</p>
-    </div>
-    
-    <div class="aux-bearer-card">
-        <div class="aux-bearer-img-box">
-            <img src="member-3.jpg" alt="EC Member 3">
-        </div>
-        <p>Sri. Name C</p>
-    </div>
-    
-    <div class="aux-bearer-card">
-        <div class="aux-bearer-img-box">
-            <img src="member-4.jpg" alt="EC Member 4">
-        </div>
-        <p>Sri. Name D</p>
-    </div>
+        <div class="aux-bearers-grid">
+            <div class="aux-bearer-card">
+                <div class="aux-bearer-img-box">
+                    <img src="member-1.jpg" alt="EC Member 1">
+                </div>
+                <p>Sri. Name A</p>
+            </div>
+            
+            <div class="aux-bearer-card">
+                <div class="aux-bearer-img-box">
+                    <img src="member-2.jpg" alt="EC Member 2">
+                </div>
+                <p>Sri. Name B</p>
+            </div>
+            
+            <div class="aux-bearer-card">
+                <div class="aux-bearer-img-box">
+                    <img src="member-3.jpg" alt="EC Member 3">
+                </div>
+                <p>Sri. Name C</p>
+            </div>
+            
+            <div class="aux-bearer-card">
+                <div class="aux-bearer-img-box">
+                    <img src="member-4.jpg" alt="EC Member 4">
+                </div>
+                <p>Sri. Name D</p>
+            </div>
 
-    <div class="aux-bearer-card">
-        <div class="aux-bearer-img-box">
-            <img src="member-5.jpg" alt="EC Member 5">
-        </div>
-        <p>Sri. Name E</p>
-    </div>
+            <div class="aux-bearer-card">
+                <div class="aux-bearer-img-box">
+                    <img src="member-5.jpg" alt="EC Member 5">
+                </div>
+                <p>Sri. Name E</p>
+            </div>
 
-    <div class="aux-bearer-card">
-        <div class="aux-bearer-img-box">
-            <img src="member-6.jpg" alt="EC Member 6">
-        </div>
-        <p>Sri. Name F</p>
-    </div>
+            <div class="aux-bearer-card">
+                <div class="aux-bearer-img-box">
+                    <img src="member-6.jpg" alt="EC Member 6">
+                </div>
+                <p>Sri. Name F</p>
+            </div>
 
-    <div class="aux-bearer-card">
-        <div class="aux-bearer-img-box">
-            <img src="member-7.jpg" alt="EC Member 7">
-        </div>
-        <p>Sri. Name G</p>
-    </div>
+            <div class="aux-bearer-card">
+                <div class="aux-bearer-img-box">
+                    <img src="member-7.jpg" alt="EC Member 7">
+                </div>
+                <p>Sri. Name G</p>
+            </div>
 
-    <div class="aux-bearer-card">
-        <div class="aux-bearer-img-box">
-            <img src="member-8.jpg" alt="EC Member 8">
         </div>
-        <p>Sri. Name H</p>
-    </div>
-
-    <div class="aux-bearer-card">
-        <div class="aux-bearer-img-box">
-            <img src="member-9.jpg" alt="EC Member 9">
-        </div>
-        <p>Sri. Name I</p>
-    </div>
-
-    <div class="aux-bearer-card">
-        <div class="aux-bearer-img-box">
-            <img src="member-10.jpg" alt="EC Member 10">
-        </div>
-        <p>Sri. Name J</p>
-    </div>
-
-    <div class="aux-bearer-card">
-        <div class="aux-bearer-img-box">
-            <img src="member-11.jpg" alt="EC Member 11">
-        </div>
-        <p>Sri. Name K</p>
-    </div>
-
-    <div class="aux-bearer-card">
-        <div class="aux-bearer-img-box">
-            <img src="member-12.jpg" alt="EC Member 12">
-        </div>
-        <p>Sri. Name L</p>
-    </div>
-</div>
     </section>
 
     <footer id="contact">
@@ -626,7 +657,7 @@
         </div>
     </footer>
 
-    
+    <script src="./text.js"></script>
     <script src="./index.js"></script>
 </body>
 </html>

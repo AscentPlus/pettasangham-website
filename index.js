@@ -255,3 +255,40 @@ nextBtn.addEventListener("click", (e) => {
 
 // Initial Load
 renderCalendar();
+
+
+// Function to Render Table
+function renderAazhiTable() {
+    const tableBody = document.getElementById('aazhi-table-body');
+    
+    // Safety Check: Ensure the table element and data exist
+    if (!tableBody || typeof ALL_AAZHI_EVENTS === 'undefined') return;
+
+    // Clear existing content
+    tableBody.innerHTML = '';
+
+    // Loop through the data array
+    ALL_AAZHI_EVENTS.forEach(event => {
+        const row = document.createElement('tr');
+        
+        // Create Google Maps Search Link dynamically
+        // Example: https://www.google.com/maps/search/Ambalapuzha+Temple
+        const mapQuery = `https://www.google.com/maps/search/${encodeURIComponent(event.name + ', ' + event.area)}`;
+
+        row.innerHTML = `
+            <td><strong>${event.date}</strong></td>
+            <td style="font-family:'Manjari', sans-serif;">${event.name}</td>
+            <td style="font-family:'Manjari', sans-serif;">${event.area}</td>
+            <td>
+                <a href="${mapQuery}" target="_blank" class="map-link-btn">
+                    <i class="fas fa-map-marker-alt"></i> View Map
+                </a>
+            </td>
+        `;
+        
+        tableBody.appendChild(row);
+    });
+}
+
+// Run when page loads
+document.addEventListener('DOMContentLoaded', renderAazhiTable);
