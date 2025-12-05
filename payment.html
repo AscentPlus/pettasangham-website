@@ -1,41 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Razorpay Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate | Ambalapuzha Yogam Petta Sangham</title>
+    
+    <!-- Link to your main CSS for Navbar/Footer/Theme -->
+    <link rel="stylesheet" href="./new2gem.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="./images/favicon.ico">
+
+    <style>
+        /* --- Page Specific Styles for Payment Form --- */
+        body {
+            background-color: var(--bg-cream); /* Use theme background */
+        }
+
+        .donation-wrapper {
+            /* background: rgb(209, 130, 57); */
+            background-image: linear-gradient(orange,red);
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-header h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: #666;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .form-group input, 
+        .form-group select {
+            width: 95%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+
+        /* Amount Field Styling */
+        .amount-group {
+            position: relative;
+        }
+        
+        .amount-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #555;
+        }
+
+        .amount-group input {
+            padding-left: 35px; /* Space for the Rupee icon */
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Pay Button */
+        .pay-btn {
+            width: 100%;
+            padding: 15px;
+            background-color:rebeccapurple;
+            color: rgb(255, 255, 255);
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .pay-btn:hover {
+            background-color: #a04000;
+            transform: translateY(-2px);
+        }
+
+        .pay-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .security-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-  <h2>Pay with Razorpay</h2>
-  <button id="payBtn">Pay Dummy ₹100</button>
+    <!-- 2. Donation Form Section -->
+    <section class="section-padding">
+        <div class="donation-wrapper">
+            <div class="form-header">
+                <h2>Make a Contribution</h2>
+                <p>Your support helps us preserve our traditions. Please fill in your details below.</p>
+            </div>
 
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+            <form id="donationForm">
+                
+                <!-- Personal Details -->
+                <div class="form-group">
+                    <label for="name">Full Name <span style="color:red">*</span></label>
+                    <input type="text" id="name" placeholder="Enter your full name" required>
+                </div>
 
-<script>
-document.getElementById('payBtn').onclick = function (e) {
-    var options = {
-        "key": "rzp_test_Rl3d5uy0amWVIU", // Your Test Key ID
-        "amount": "10000", // 100 INR
-        "currency": "INR",
-        "name": "Test Payment",
-        "description": "Dummy Testing",
-        "handler": function (response) {
-            alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
-        },
-        "prefill": {
-            "name": "Test User",
-            "email": "test@example.com",
-            "contact": "9999999999"
-        },
-        "theme": {
-            "color": "#3399cc"
+                <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <label for="phone">Phone Number <span style="color:red">*</span></label>
+                        <input type="tel" id="phone" placeholder="9876543210" pattern="[0-9]{10}" required>
+                    </div>
+                    <div>
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="example@email.com">
+                    </div>
+                </div>
+
+                <!-- Donation Details -->
+                <div class="form-group">
+                    <label for="purpose">Purpose of Donation</label>
+                    <select id="purpose">
+                        <option value="General Fund">General Fund / Donation</option>
+                        <option value="Annadanam">Annadanam (Food Offering)</option>
+                        <option value="Festival">Petta Thullal Festival</option>
+                        <option value="Pooja Offering">Specific Pooja Offering</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Amount (INR) <span style="color:red">*</span></label>
+                    <div class="amount-group">
+                        <i class="fas fa-rupee-sign"></i>
+                        <input type="number" id="amount" placeholder="Minimum ₹10" min="10" required>
+                    </div>
+                </div>
+
+                <!-- Hidden inputs for Razorpay Logic -->
+                <input type="hidden" id="payment_id">
+
+                <button type="submit" class="pay-btn" id="payBtn">Proceed to Pay</button>
+                
+                <p class="security-note">
+                    <i class="fas fa-lock"></i> Secured by Razorpay. Your data is safe.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container" style="text-align: center; color: white;">
+            <p>&copy; 2025 Ambalapuzha Yogam Petta Sangham Trust.</p>
+        </div>
+    </footer>
+
+    <!-- Razorpay SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <!-- Main Logic Script -->
+    <script>
+        // 1. Handle Form Submission
+        document.getElementById('donationForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop page reload
+
+            // A. Get User Inputs
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const purpose = document.getElementById('purpose').value;
+            const amount = document.getElementById('amount').value;
+
+            // Basic Validation
+            if(amount < 1) {
+                alert("Please enter a valid amount.");
+                return;
+            }
+
+            // B. Initialize Razorpay Options with DYNAMIC values
+            var options = {
+                "key": "rzp_test_Rl3d5uy0amWVIU", // YOUR TEST KEY ID
+                "amount": amount * 100, // Amount is in paise (Multiply by 100)
+                "currency": "INR",
+                "name": "Ambalapuzha Sangham",
+                "description": "Donation for " + purpose,
+                "image": "./images/ayyappan.png", // Your logo path
+                
+                // Prefill user details in the payment popup
+                "prefill": {
+                    "name": name,
+                    "email": email,
+                    "contact": phone
+                },
+                "theme": {
+                    "color": "#800000" // Matches your Maroon Theme
+                },
+                
+                // C. Handler Function (Runs AFTER payment success)
+                "handler": function (response) {
+                    // 1. Get Payment ID
+                    const paymentId = response.razorpay_payment_id;
+                    
+                    // 2. Alert User
+                    alert("Payment Successful! Payment ID: " + paymentId);
+
+                    // 3. Save Data (This is where you connect to Excel/Database)
+                    saveTransactionData(name, phone, email, purpose, amount, paymentId);
+                },
+                
+                "modal": {
+                    "ondismiss": function(){
+                        console.log('Checkout form closed');
+                    }
+                }
+            };
+
+            // D. Open Razorpay
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        });
+
+
+        // --- FUNCTION TO SAVE DATA (Placeholder) ---
+        function saveTransactionData(name, phone, email, purpose, amount, paymentId) {
+            
+            // OPTION 1: Google Sheets (No Backend Required)
+            // You would use a 'Google Apps Script' Web App URL here.
+            // Example Code Idea:
+            
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbykVhvhN8Qhevuyc3aLe05LhJZ4Qfeb4J-21uvaQTe_6uwG7TMJzW5gFUSgHRuAZfF7/exec';
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('phone',phone);
+            formData.append('email',email);
+            formData.append('purpose', purpose);
+            formData.append('amount', amount);
+            formData.append('payment_id', paymentId);
+            
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => console.log('Success!', response))
+                .catch(error => console.error('Error!', error.message));
+            
+
+            console.log("Saving Data...");
+            console.log({
+                Name: name,
+                Phone: phone,
+                Email:email,
+                Amount: amount,
+                Purpose: purpose,
+                ID: paymentId,
+                Date: new Date().toLocaleString()
+            });
+
+            // For now, redirect home after 2 seconds
+            setTimeout(() => {
+                window.location.href = "index.html"; 
+            }, 2000);
         }
-    };
-    var rzp = new Razorpay(options);
-    rzp.open();
-    e.preventDefault();
-}
-</script>
+
+        // Mobile Menu Toggle (Copied from index.js for standalone functionality)
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        if(hamburger) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('nav-active');
+            });
+        }
+    </script>
 
 </body>
 </html>
