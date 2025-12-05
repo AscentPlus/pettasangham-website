@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="shortcut icon" href="./images/favicon.ico">
+    <link rel="stylesheet" href="index.css">
 
     <style>
         /* --- Page Specific Styles for Payment Form --- */
@@ -21,7 +22,7 @@
 
         .donation-wrapper {
             /* background: rgb(209, 130, 57); */
-            background-image: linear-gradient(orange,red);
+            background-image: linear-gradient(orange,rgb(0, 0, 0));
             max-width: 600px;
             margin: 50px auto;
             padding: 40px;
@@ -36,13 +37,14 @@
         }
 
         .form-header h2 {
-            color: var(--primary-color);
+            /* color: var(--primary-color); */
+            color: white;
             font-size: 2rem;
             margin-bottom: 10px;
         }
 
         .form-header p {
-            color: #666;
+            color: #d8d8d8;
         }
 
         /* Form Elements */
@@ -54,7 +56,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: var(--text-color);
+            color: white;
         }
 
         .form-group input, 
@@ -98,8 +100,8 @@
         .pay-btn {
             width: 100%;
             padding: 15px;
-            background-color:rebeccapurple;
-            color: rgb(255, 255, 255);
+            background-color:rgb(255, 123, 0);
+            color: rgb(0, 0, 0);
             font-size: 1.1rem;
             font-weight: bold;
             border: none;
@@ -110,12 +112,13 @@
         }
 
         .pay-btn:hover {
-            background-color: #a04000;
-            transform: translateY(-2px);
+            background-color: rgb(255, 153, 0);
+            /* transform: translateY(-2px); */
         }
 
         .pay-btn:disabled {
             background-color: #ccc;
+            color: rgb(255, 255, 255);
             cursor: not-allowed;
         }
 
@@ -125,6 +128,62 @@
             color: #888;
             margin-top: 20px;
         }
+
+        /* Alignment CSS for form inputs - drop this into your page CSS (or inside a <style> block) */
+
+/* Ensure predictable sizing */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+/* Container sizing */
+.donation-wrapper { max-width: 720px; margin: 40px auto; padding: 28px; }
+
+/* Base form groups */
+.form-group { display: flex; flex-direction: column; gap: 6px; width: 100%; }
+.form-group label { font-weight: 600; font-size: 0.95rem; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fff;
+}
+
+/* Two-column row: phone + email, etc. */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two equal columns */
+  gap: 20px;                     /* horizontal spacing between columns */
+  align-items: start;
+}
+
+/* If you previously used inline grid styles, remove them so this CSS takes effect:
+   style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;"
+*/
+
+/* Amount group: keep icon aligned and input full width */
+.amount-group { position: relative; width: 100%; }
+.amount-group i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #666; }
+.amount-group input { padding-left: 36px; }
+
+/* Make button and small blocks align with inputs */
+.pay-btn { display: block; width: 100%; }
+
+/* Responsive: stack the two columns on small screens */
+@media (max-width: 640px) {
+  .form-row { grid-template-columns: 1fr; gap: 12px; }
+  .donation-wrapper { padding: 20px; margin: 18px; }
+  .amount-group i { left: 10px; }
+}
+
+/* Optional: small visual polish to make columns visually identical */
+.form-row .form-group input,
+.form-row .form-group select { height: 44px; }
+
     </style>
 </head>
 <body>
@@ -187,9 +246,41 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container" style="text-align: center; color: white;">
-            <p>&copy; 2025 Ambalapuzha Yogam Petta Sangham Trust.</p>
+     <footer id="contact">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>Ambalapuzha Yogam Petta Sangham</h3>
+                <p>Preserving the divine legacy.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <p>
+                    <a href="https://maps.google.com/?q=Ambalapuzha, Kerala, India" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-map-marker-alt"></i> Ambalapuzha, Kerala, India
+                    </a>
+                </p>
+                <p>
+                    <a href="tel:+919876543210">
+                        <i class="fas fa-phone"></i> +91 98765 43210
+                    </a>
+                </p>
+                <p>
+                    <a href="mailto:info@pettasangam.org">
+                        <i class="fas fa-envelope"></i> info@pettasangam.org
+                    </a>
+                </p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="./gallery.html">Gallery</a></li>
+                    <li><a href="#news">Events</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Ambalapuzha Yogam Petta Sangham Trust. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -266,7 +357,7 @@
             // You would use a 'Google Apps Script' Web App URL here.
             // Example Code Idea:
             
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbykVhvhN8Qhevuyc3aLe05LhJZ4Qfeb4J-21uvaQTe_6uwG7TMJzW5gFUSgHRuAZfF7/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxzPG39TvuGk49E7Yli90h067TP6AHyiRDDco6lvFR5uRYvbPDoFZi0udszvr9y98_l/exec';
             const formData = new FormData();
             formData.append('name', name);
             formData.append('phone',phone);
