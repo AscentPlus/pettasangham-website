@@ -11,13 +11,16 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="shortcut icon" href="./images/favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="index.css">
 
     <style>
         /* --- Page Specific Styles for Payment Form --- */
         body {
-            background-color: var(--bg-cream); /* Use theme background */
+            /* background-color: var(--bg-cream);  */
+            background-image: url(images/amz2.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         .donation-wrapper {
@@ -313,7 +316,7 @@
                 "currency": "INR",
                 "name": "Ambalapuzha Sangham",
                 "description": "Donation for " + purpose,
-                "image": "./images/ayyappan.png", // Your logo path
+                "image": "ayyappan.png", // Your logo path
                 
                 // Prefill user details in the payment popup
                 "prefill": {

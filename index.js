@@ -5,7 +5,7 @@ const hero = document.querySelector('.hero');
 // 1. Define your image array (update these paths as necessary)
 const heroImages = [
     'timg33.jpg',
-    'amz2.jpg', 
+    'amz2.jpg',
     'amz3.jpg'
 ];
 
@@ -15,21 +15,21 @@ const intervalTime = 5000; // 5000 milliseconds = 5 seconds transition interval
 function changeHeroBackground() {
     // 2. Increment the index and loop back to 0 if it exceeds the array length
     currentImageIndex = (currentImageIndex + 1) % heroImages.length;
-    
+
     const nextImage = heroImages[currentImageIndex];
-    
+
     // 3. Preload the next image to prevent flickering
     const img = new Image();
     img.src = nextImage;
-    
+
     img.onload = () => {
         // 4. Once the image is loaded, update the background-image property
         hero.style.backgroundImage = `url('${nextImage}')`;
     };
-    
+
     // Fallback: If image fails to load, still switch (optional)
     img.onerror = () => {
-        hero.style.backgroundImage = `url('${nextImage}')`; 
+        hero.style.backgroundImage = `url('${nextImage}')`;
         console.error(`Failed to load background image: ${nextImage}`);
     };
 }
@@ -41,7 +41,7 @@ setInterval(changeHeroBackground, intervalTime);
 
 
 
-        // --- CAROUSEL LOGIC ---
+// --- CAROUSEL LOGIC ---
 const track = document.querySelector('.slider-track');
 const slides = Array.from(track.children); // Array of all .news-slide elements
 const nextButton = document.querySelector('.next-btn');
@@ -50,11 +50,11 @@ const prevButton = document.querySelector('.prev-btn');
 // const sliderContainer = document.querySelector('.slider-container'); 
 
 // Standard Auto-Scroll Interval Time (in milliseconds)
-const AUTO_SCROLL_INTERVAL = 2500; 
+const AUTO_SCROLL_INTERVAL = 2500;
 
 let slideWidth = slides[0].getBoundingClientRect().width;
 let currentSlideIndex = 0;
-let autoScroll; 
+let autoScroll;
 
 // Arrange the slides next to one another
 const setSlidePosition = (slide, index) => {
@@ -90,7 +90,7 @@ function resetAutoScroll() {
 window.addEventListener('resize', () => {
     slideWidth = slides[0].getBoundingClientRect().width;
     // Must re-position slides on resize for accurate slider movement
-    slides.forEach(setSlidePosition); 
+    slides.forEach(setSlidePosition);
     moveToSlide(currentSlideIndex);
 });
 
@@ -100,7 +100,7 @@ nextButton.addEventListener('click', () => {
     const maxIndex = slides.length - slidesVisible;
 
     if (currentSlideIndex >= maxIndex) {
-        currentSlideIndex = 0; 
+        currentSlideIndex = 0;
     } else {
         currentSlideIndex++;
     }
@@ -114,7 +114,7 @@ prevButton.addEventListener('click', () => {
     const maxIndex = slides.length - slidesVisible;
 
     if (currentSlideIndex <= 0) {
-        currentSlideIndex = maxIndex; 
+        currentSlideIndex = maxIndex;
     } else {
         currentSlideIndex--;
     }
@@ -215,11 +215,11 @@ function renderCalendar() {
     for (let i = 1; i <= lastDay; i++) {
         // Check if it is TODAY
         const isToday = i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear() ? "today" : "";
-        
+
         // Check if it is an EVENT DATE
         let isEvent = "";
         let eventTitle = "";
-        
+
         templeEvents.forEach(evt => {
             if (evt.day === i && evt.month === month) {
                 isEvent = "event-date";
@@ -260,7 +260,7 @@ renderCalendar();
 // Function to Render Table
 function renderAazhiTable() {
     const tableBody = document.getElementById('aazhi-table-body');
-    
+
     // Safety Check: Ensure the table element and data exist
     if (!tableBody || typeof ALL_AAZHI_EVENTS === 'undefined') return;
 
@@ -270,7 +270,7 @@ function renderAazhiTable() {
     // Loop through the data array
     ALL_AAZHI_EVENTS.forEach(event => {
         const row = document.createElement('tr');
-        
+
         // Create Google Maps Search Link dynamically
         // Example: https://www.google.com/maps/search/Ambalapuzha+Temple
         const mapQuery = `https://www.google.com/maps/search/${encodeURIComponent(event.name + ', ' + event.area)}`;
@@ -285,10 +285,93 @@ function renderAazhiTable() {
                 </a>
             </td>
         `;
-        
+
         tableBody.appendChild(row);
     });
 }
 
 // Run when page loads
 document.addEventListener('DOMContentLoaded', renderAazhiTable);
+
+
+// --- NEWS & HISTORY MODAL LOGIC ---
+const newsModal = document.getElementById('news-modal');
+const modalImg = document.getElementById('modal-img');
+const modalIconContainer = document.getElementById('modal-icon-container');
+const modalIcon = document.getElementById('modal-icon');
+const modalTitle = document.getElementById('modal-title');
+const modalDesc = document.getElementById('modal-desc');
+const closeModalBtn = document.querySelector('.close-modal');
+
+// Select both news cards and history cards
+// We select .news-card AND .card (specifically those inside #history to be safe)
+const allCards = document.querySelectorAll('.news-card, #history .card');
+
+// Open Modal when a card is clicked
+allCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+        // Prevent default if it's a link
+        e.preventDefault();
+
+        // 1. Get Data from the clicked card
+        const fullDesc = card.getAttribute('data-full-description');
+        // Fallback to the paragraph text if no detailed description exists
+        const shortDesc = card.querySelector('p') ? card.querySelector('p').innerText : "";
+        const description = fullDesc ? fullDesc : shortDesc;
+
+        // Get Title (h3 or h4)
+        const titleEl = card.querySelector('h3') || card.querySelector('h4');
+        const title = titleEl ? titleEl.innerText : "Details";
+
+        // 2. Determine if it is an Image Card (News) or Icon Card (History)
+        const imgDiv = card.querySelector('.news-img');
+        const iconEl = card.querySelector('.icon-large');
+
+        if (imgDiv) {
+            // It's a News Card -> Show Image, Hide Icon
+            const style = window.getComputedStyle(imgDiv);
+            const bgImage = style.backgroundImage.slice(5, -2); // Remove 'url("' and '")'
+
+            modalImg.src = bgImage;
+            modalImg.style.display = 'block';
+            modalIconContainer.style.display = 'none';
+        } else if (iconEl) {
+            // It's a History Card -> Show Icon, Hide Image
+            // Copy the classes from the card's icon to the modal's icon
+            modalIcon.className = iconEl.className;
+
+            modalImg.style.display = 'none';
+            modalIconContainer.style.display = 'block';
+        }
+
+        // 3. Populate Text
+        modalTitle.innerText = title;
+        modalDesc.innerText = description;
+
+        // 4. Show Modal
+        newsModal.style.display = "flex";
+
+        // 5. Stop auto-scroll if it's running (safe to call even if not)
+        if (typeof stopAutoScroll === "function") {
+            stopAutoScroll();
+        }
+    });
+});
+
+// Close Modal when X is clicked
+closeModalBtn.addEventListener('click', () => {
+    newsModal.style.display = "none";
+    if (typeof startAutoScroll === "function") {
+        startAutoScroll();
+    }
+});
+
+// Close Modal when clicking outside the content (on the overlay)
+window.addEventListener('click', (e) => {
+    if (e.target == newsModal) {
+        newsModal.style.display = "none";
+        if (typeof startAutoScroll === "function") {
+            startAutoScroll();
+        }
+    }
+});
