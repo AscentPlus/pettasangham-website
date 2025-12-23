@@ -11,14 +11,14 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="index.css">
 
     <style>
         /* --- Page Specific Styles for Payment Form --- */
         body {
             /* background-color: var(--bg-cream);  */
-            background-image: url(images/amz2.jpg);
+            background-image: url(amz2.jpg);
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -190,6 +190,75 @@
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="logoimg">
+            <img src="/ayyappan.png" alt="logo" class="logo-icon">
+        </div>
+        <div class="logo">
+            Ambalapuzha Yogam Petta Sangham
+        </div>
+        <ul class="nav-links">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./index.html#about">About Us</a></li>
+            <li><a href="./history.html">History</a></li>
+            <li class="dropdown">
+                <a href="./index.html#events">Events</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#aazhipooja">1. Aazhi Pooja</a></li>
+                    <ul class="submenu">
+                        <li><a href="#aazhi-table-section">List of Aazhi Pooja</a></li>
+                        <!-- Add more items later if needed -->
+                    </ul>
+                    <li><a href="#annadanam">2. Annadanam</a></li>
+                    <li><a href="#radhayatra">3. Ratha Yatra</a></li>
+                    <li><a href="#manimala">4. Manimala Aazhi Pooja</a></li>
+                    <li><a href="#pettathullal">5. Erumeli Pettathullal</a></li>
+                    <li><a href="#pampa">6. Pampa Sadhya</a></li>
+                    <li><a href="#makaravilakku">7. Makaravilakku</a></li>
+                    <li><a href="#mahanivedhyam">8. Mahanivedhyam</a></li>
+                    <li><a href="#seeveli">9. Sheeveli Ezhunnallathu</a></li>
+                    <li><a href="#karpooraazhi">10. Karpooraazhi</a></li>
+                    <li><a href="#uthram">11. Uthram Yatra</a></li>
+                </ul>
+            </li>
+            <!-- <li><a href="#petta">Petta Thullal</a></li> -->
+            <li class="dropdown">
+                <a href="./index.html#calendar" class="mobile-dropdown-toggle">Calendar</a>
+
+                <div class="dropdown-menu calendar-dropdown mobile-accordion">
+                    <div class="calendar-wrapper">
+
+                        <div class="calendar-header">
+                            <button id="prev-month" title="Previous Month">&lt;</button>
+                            <h3 id="month-year">Month Year</h3>
+                            <button id="next-month" title="Next Month">&gt;</button>
+                        </div>
+
+                        <div class="calendar-days">
+                            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                        </div>
+
+                        <div class="calendar-grid" id="calendar-grid"></div>
+
+                        <div class="calendar-footer">
+                            <h4>Upcoming Key Dates:</h4>
+                            <ul id="event-list-display">
+                                <li><span class="dot"></span> <strong>Jan 11:</strong> Petta Thullal</li>
+                                <li><span class="dot"></span> <strong>Jan 14:</strong> Makaravilakku</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li><a href="./index.html#news">News</a></li>
+            <li><a href="./gallery.html">Gallery</a></li>
+            <li><a href="./index.html#contact">Contact</a></li>
+            <li><a href="./payment.html" class="btn-donate">Donate</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
     <!-- 2. Donation Form Section -->
     <section class="section-padding">
         <div class="donation-wrapper">
@@ -316,7 +385,7 @@
                 "currency": "INR",
                 "name": "Ambalapuzha Sangham",
                 "description": "Donation for " + purpose,
-                "image": "ayyappan.png", // Your logo path
+                "image": "/ayyappan.png", // Your logo path
                 
                 // Prefill user details in the payment popup
                 "prefill": {

@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery | Ambalapuzha Yogam Sangham Trust</title>
-    <link rel="stylesheet" href="./gallery.css"> 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./gallery.css">
+    <script src="./gallery-data.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="shortcut icon" href="ayyappan.png">
+    <link rel="shortcut icon" href="/ayyappan.png">
 </head>
+
 <body>
 
     <nav class="navbar">
         <div class="logoimg">
-            <img src="ayyappan.png" alt="logo" class="logo-icon">
+            <img src="/ayyappan.png" alt="logo" class="logo-icon">
         </div>
         <div class="logo">
-             Ambalapuzha Yogam Petta Sangham
+            Ambalapuzha Yogam Petta Sangham
         </div>
         <ul class="nav-links">
             <li><a href="./index.html">Home</a></li>
@@ -26,7 +31,7 @@
             <!-- <li><a href="./index.html#petta">Petta Thullal</a></li> -->
             <li><a href="./index.html#calendar">Calendar</a></li>
             <li><a href="./index.html#news">News</a></li>
-            <li><a href="./gallery.html" class="active">Gallery</a></li> 
+            <li><a href="./gallery.html" class="active">Gallery</a></li>
             <li><a href="./index.html#contact">Contact</a></li>
             <li><a href="./payment.html" class="btn-donate">Donate</a></li>
         </ul>
@@ -34,55 +39,24 @@
             <i class="fas fa-bars"></i>
         </div>
     </nav>
-    
+
     <section class="section-padding">
         <div class="container">
             <h2 class="section-title">Petta Thullal Photo Gallery</h2>
-            <p class="text-center">A glimpse into the sacred rituals and vibrant energy of the annual Petta Thullal journey.</p>
-            
-            <div class="gallery-grid">
-                <div class="gallery-item" onclick="openLightbox(0)">
-                    <img src="timg1.jfif" alt="Petta Thullal ritual" loading="lazy">
-                </div>
-                
-                <div class="gallery-item" onclick="openLightbox(1)">
-                    <img src="timg2.png" alt="Procession drums" loading="lazy">
-                </div>
-                
-                <div class="gallery-item" onclick="openLightbox(2)">
-                    <img src="timg33.jpg" alt="Procession drums" loading="lazy">
-                </div>
-                
-                <div class="gallery-item" onclick="openLightbox(3)">
-                    <img src="timg4.jpg" alt="Procession drums" loading="lazy">
-                </div>
-                
-                <div class="gallery-item" onclick="openLightbox(4)">
-                    <img src="timg5.jpg" alt="Procession drums" loading="lazy">
-                </div>
-                
-                <div class="gallery-item" onclick="openLightbox(5)">
-                    <img src="timg6.jfif" alt="Procession drums" loading="lazy">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(6)">
-                    <img src="img7.jfif" alt="Procession drums" loading="lazy">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(7)">
-                    <img src="img8.jfif" alt="Procession drums" loading="lazy">
-                </div>
+            <p class="text-center">A glimpse into the sacred rituals and vibrant energy of the annual Petta Thullal
+                journey.</p>
 
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Javascript will populate this -->
             </div>
 
             <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+                <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+                <a class="prev-arrow" onclick="changeImage(-1); event.stopPropagation();">&#10094;</a>
+                <a class="next-arrow" onclick="changeImage(1); event.stopPropagation();">&#10095;</a>
+
                 <div class="lightbox-content" onclick="event.stopPropagation()">
-                    
-                    <a class="prev-arrow" onclick="changeImage(-1); event.stopPropagation();">&#10094;</a> 
-                    
-                    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-                    
                     <img id="lightbox-image" src="" alt="Full size gallery image">
-                    
-                    <a class="next-arrow" onclick="changeImage(1); event.stopPropagation();">&#10095;</a>
                 </div>
             </div>
         </div>
@@ -97,7 +71,8 @@
             <div class="footer-col">
                 <h3>Contact Us</h3>
                 <p>
-                    <a href="https://maps.google.com/?q=Ambalapuzha, Kerala, India" target="_blank" rel="noopener noreferrer">
+                    <a href="https://maps.google.com/?q=Ambalapuzha, Kerala, India" target="_blank"
+                        rel="noopener noreferrer">
                         <i class="fas fa-map-marker-alt"></i> Ambalapuzha, Kerala, India
                     </a>
                 </p>
@@ -125,20 +100,52 @@
             <p>&copy; 2025 Ambalapuzha Yogam Sangham Trust. All Rights Reserved.</p>
         </div>
     </footer>
-    
+
     <script>
-        // --- 1. Data Structure (MUST match the images in the HTML) ---
-        const galleryImages = [
-            'timg1.jfif',
-            'timg2.png',
-            'timg33.jpg',
-            'timg4.jpg',
-            'timg5.jpg',
-            'timg6.jfif',
-            'img7.jfif',
-            'img8.jfif'
-        ];
-        let currentIndex = 0; // Global variable to track the currently viewed image index
+        // --- 1. Data Structure (Dynamically loaded from gallery-data.js) ---
+        // galleryData is defined in gallery-data.js as [{id, alt}, ...]
+
+        // Initialize galleryImages array for the lightbox navigation
+        let galleryImages = [];
+        let currentIndex = 0;
+
+        function initGallery() {
+            const grid = document.getElementById('gallery-grid');
+            grid.innerHTML = ''; // Clear any existing content
+
+            if (typeof galleryData === 'undefined') {
+                console.error("galleryData is missing! Make sure gallery-data.js is loaded.");
+                return;
+            }
+
+            galleryData.forEach((item, index) => {
+                // 1. Construct the Image URL
+                const imageUrl = getDriveUrl(item.id);
+                // Push to our lightbox array
+                galleryImages.push(imageUrl);
+
+                // 2. Create HTML Elements
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+                div.onclick = () => openLightbox(index);
+
+                const img = document.createElement('img');
+                img.src = imageUrl;
+                img.alt = item.alt || 'Gallery Image';
+                img.loading = 'lazy';
+
+                // Optional: Add error handling for images
+                img.onerror = function () {
+                    this.style.display = 'none'; // Hide if broken
+                };
+
+                div.appendChild(img);
+                grid.appendChild(div);
+            });
+        }
+
+        // Run initialization
+        document.addEventListener('DOMContentLoaded', initGallery);
 
         // --- 2. Core Lightbox Functions ---
 
@@ -159,18 +166,18 @@
 
         function openLightbox(index) {
             const lightbox = document.getElementById('lightbox');
-            
+
             // Set the initial image and update the index
-            showImage(index); 
+            showImage(index);
 
             lightbox.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; 
+            document.body.style.overflow = 'hidden';
         }
 
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
             lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto'; 
+            document.body.style.overflow = 'auto';
         }
 
         function changeImage(step) {
@@ -179,36 +186,37 @@
         }
 
 
-// edited
+        // edited
         // --- MOBILE MENU TOGGLE SCRIPT ---
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-const links = document.querySelectorAll('.nav-links li');
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const links = document.querySelectorAll('.nav-links li');
 
-hamburger.addEventListener('click', () => {
-    // 1. Toggle the side menu
-    navLinks.classList.toggle('nav-active');
+        hamburger.addEventListener('click', () => {
+            // 1. Toggle the side menu
+            navLinks.classList.toggle('nav-active');
 
-    // 2. Animate the Links (Optional: nice fade-in effect)
-    links.forEach((link, index) => {
-        if (link.style.animation) {
-            link.style.animation = '';
-        } else {
-            // Stagger the animation so they appear one by one
-            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-        }
-    });
+            // 2. Animate the Links (Optional: nice fade-in effect)
+            links.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    // Stagger the animation so they appear one by one
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
 
-    // 3. Burger Animation (Optional: turns lines into X)
-    hamburger.classList.toggle('toggle');
-});
+            // 3. Burger Animation (Optional: turns lines into X)
+            hamburger.classList.toggle('toggle');
+        });
 
-// 4. Close menu when a link is clicked
-navLinks.addEventListener('click', () => {
-    navLinks.classList.remove('nav-active');
-    hamburger.classList.remove('toggle');
-});
+        // 4. Close menu when a link is clicked
+        navLinks.addEventListener('click', () => {
+            navLinks.classList.remove('nav-active');
+            hamburger.classList.remove('toggle');
+        });
 
-    </script> 
+    </script>
 </body>
+
 </html>

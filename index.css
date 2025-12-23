@@ -171,7 +171,7 @@ h1, h2, h3, h4 {
 /* Optional: Define the initial background using a CSS variable (or keep it as is) */
 .hero {
     /* Set initial background */
-   background-image: var(--current-bg, url('timg33.jpg'));
+   background-image: var(--current-bg, url('/amz2.jpg'));
 }
 
 .hero-overlay {
@@ -670,7 +670,7 @@ footer {
 .track {
     display: flex;
     width: fit-content; /* Adjusts to content size */
-    animation: scroll-text 20s linear infinite; /* Adjust '20s' to change speed */
+    animation: scroll-text 30s linear infinite; /* Adjust '20s' to change speed */
 }
 
 /* 3. The Content Groups */

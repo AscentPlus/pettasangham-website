@@ -4,9 +4,9 @@ const hero = document.querySelector('.hero');
 
 // 1. Define your image array (update these paths as necessary)
 const heroImages = [
-    'timg33.jpg',
-    'amz2.jpg',
-    'amz3.jpg'
+    '/amz2.jpg',
+    '/pooja.jpg',
+    '/aazhipooja.jpg'
 ];
 
 let currentImageIndex = 0;
