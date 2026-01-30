@@ -4,219 +4,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery | Ambalapuzha Yogam Sangham Trust</title>
-    <link rel="stylesheet" href="./gallery.css">
-    <script src="./gallery-data.js"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="shortcut icon" href="/ayyappan.png">
+    <title>Gallery | Pallippana</title>
+    <meta name="description" content="Photo gallery of Pallippana ritual and Ambalapuzha temple events.">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.png" type="image/x-icon">
+    <!-- SEO Meta Tags -->
+    <meta name="keywords"
+        content="Pallippana, Ambalapuzha, Ambalapuzha Temple, Ambalapuzha Sree Krishna Swamy Temple, Ambalapuzha Payasam, Dravyakalasam, Pallippana 2026">
+    <meta name="author" content="Pallippana Media Cell">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ambalapuzhatemplepallippana2026.com/gallery.html">
+    <meta property="og:title" content="Gallery | Pallippana 2026">
+    <meta property="og:description" content="Photo gallery of Pallippana ritual and Ambalapuzha temple events.">
+    <meta property="og:image" content="images/logo.png">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.ambalapuzhatemplepallippana2026.com/gallery.html">
+    <meta property="twitter:title" content="Gallery | Pallippana 2026">
+    <meta property="twitter:description" content="Photo gallery of Pallippana ritual and Ambalapuzha temple events.">
+    <meta property="twitter:image" content="images/logo.png">
+    <style>
+        /* Internal override for gallery page specific needs if any, usually keep in style.css */
+        body {
+            background-color: var(--content-white);
+        }
+
+        .gallery-page-header {
+            padding-top: 120px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+    </style>
 </head>
 
 <body>
 
-    <nav class="navbar">
-        <div class="logoimg">
-            <img src="/ayyappan.png" alt="logo" class="logo-icon">
-        </div>
-        <div class="logo">
-            Ambalapuzha Yogam Petta Sangham
-        </div>
-        <ul class="nav-links">
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./index.html#about">About Us</a></li>
-            <li><a href="./history.html">History</a></li>
-            <li><a href="./index.html#events">Events</a></li>
-            <!-- <li><a href="./index.html#petta">Petta Thullal</a></li> -->
-            <li><a href="./index.html#calendar">Calendar</a></li>
-            <li><a href="./index.html#news">News</a></li>
-            <li><a href="./gallery.html" class="active">Gallery</a></li>
-            <li><a href="./index.html#contact">Contact</a></li>
-            <li><a href="./payment.html" class="btn-donate">Donate</a></li>
-        </ul>
-        <div class="hamburger">
-            <i class="fas fa-bars"></i>
+    <!-- Navigation -->
+    <nav class="navbar scrolled static-nav">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Pallippana Logo">
+            <div class="logo-text">
+                <span class="logo-main">Pallippana</span>
+                <span class="logo-sub">Dravyakalasam</span>
+            </div>
+        </a>
+        <div class="menu-toggle">☰</div>
+        <div class="nav-links">
+            <a href="index.html">Back to Home</a>
         </div>
     </nav>
 
-    <section class="section-padding">
-        <div class="container">
-            <h2 class="section-title">Petta Thullal Photo Gallery</h2>
-            <p class="text-center">A glimpse into the sacred rituals and vibrant energy of the annual Petta Thullal
-                journey.</p>
-
-            <div class="gallery-grid" id="gallery-grid">
-                <!-- Javascript will populate this -->
-            </div>
-
-            <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-                <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-                <a class="prev-arrow" onclick="changeImage(-1); event.stopPropagation();">&#10094;</a>
-                <a class="next-arrow" onclick="changeImage(1); event.stopPropagation();">&#10095;</a>
-
-                <div class="lightbox-content" onclick="event.stopPropagation()">
-                    <img id="lightbox-image" src="" alt="Full size gallery image">
-                </div>
-            </div>
+    <!-- Gallery Section -->
+    <section id="gallery" class="fade-in">
+        <div class="section-title">
+            <h2>Photo Gallery</h2>
+        </div>
+        <div class="gallery-grid" id="gallery-grid">
+            <!-- Dynamically populated from photos.json -->
         </div>
     </section>
 
-    <footer id="contact">
-        <div class="container footer-grid">
-            <div class="footer-col">
-                <h3>Ambalapuzha Yogam Petta Sangham</h3>
-                <p>Preserving the divine legacy.</p>
-            </div>
-            <div class="footer-col">
-                <h3>Contact Us</h3>
-                <p>
-                    <a href="https://maps.google.com/?q=Ambalapuzha, Kerala, India" target="_blank"
-                        rel="noopener noreferrer">
-                        <i class="fas fa-map-marker-alt"></i> Ambalapuzha, Kerala, India
-                    </a>
-                </p>
-                <p>
-                    <a href="tel:+919876543210">
-                        <i class="fas fa-phone"></i> +91 98765 43210
-                    </a>
-                </p>
-                <p>
-                    <a href="mailto:info@pettasangam.org">
-                        <i class="fas fa-envelope"></i> info@pettasangam.org
-                    </a>
-                </p>
-            </div>
-            <div class="footer-col">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="./index.html#home">Home</a></li>
-                    <li><a href="./gallery.html">Gallery</a></li>
-                    <li><a href="./index.html#news">Events</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2025 Ambalapuzha Yogam Sangham Trust. All Rights Reserved.</p>
-        </div>
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <button class="lightbox-nav prev" id="lightbox-prev">&#10094;</button>
+        <img src="" alt="Zoomed Image" id="lightbox-img">
+        <button class="lightbox-nav next" id="lightbox-next">&#10095;</button>
+    </div>
+
+    <footer>
+        <p>Pallippana Dravyakalasam 2026 | Ambalapuzha Sree Krishna Swamy Temple</p>
+        <p style="font-size: 0.8rem; margin-top: 10px;">&copy; Pallippana Media Cell 2026 </p>
+        <p style="font-size: 0.8rem; margin-top: 5px;">Website designed by <a href="http://www.ascentplus.net"
+                target="_blank">Ascent Plus</a></p>
     </footer>
 
-    <script>
-        // --- 1. Data Structure (Dynamically loaded from gallery-data.js) ---
-        // galleryData is defined in gallery-data.js as [{id, alt}, ...]
-
-        // Initialize galleryImages array for the lightbox navigation
-        let galleryImages = [];
-        let currentIndex = 0;
-
-        function initGallery() {
-            const grid = document.getElementById('gallery-grid');
-            grid.innerHTML = ''; // Clear any existing content
-
-            if (typeof galleryData === 'undefined') {
-                console.error("galleryData is missing! Make sure gallery-data.js is loaded.");
-                return;
-            }
-
-            galleryData.forEach((item, index) => {
-                // 1. Construct the Image URL
-                const imageUrl = getDriveUrl(item.id);
-                // Push to our lightbox array
-                galleryImages.push(imageUrl);
-
-                // 2. Create HTML Elements
-                const div = document.createElement('div');
-                div.className = 'gallery-item';
-                div.onclick = () => openLightbox(index);
-
-                const img = document.createElement('img');
-                img.src = imageUrl;
-                img.alt = item.alt || 'Gallery Image';
-                img.loading = 'lazy';
-
-                // Optional: Add error handling for images
-                img.onerror = function () {
-                    this.style.display = 'none'; // Hide if broken
-                };
-
-                div.appendChild(img);
-                grid.appendChild(div);
-            });
-        }
-
-        // Run initialization
-        document.addEventListener('DOMContentLoaded', initGallery);
-
-        // --- 2. Core Lightbox Functions ---
-
-        function showImage(index) {
-            // Handle wrapping around (the carousel effect)
-            if (index >= galleryImages.length) {
-                currentIndex = 0; // Wrap to the first image
-            } else if (index < 0) {
-                currentIndex = galleryImages.length - 1; // Wrap to the last image
-            } else {
-                currentIndex = index;
-            }
-
-            const lightboxImage = document.getElementById('lightbox-image');
-            // Set the image source based on the new index
-            lightboxImage.src = galleryImages[currentIndex];
-        }
-
-        function openLightbox(index) {
-            const lightbox = document.getElementById('lightbox');
-
-            // Set the initial image and update the index
-            showImage(index);
-
-            lightbox.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function changeImage(step) {
-            // step is either +1 (next) or -1 (previous)
-            showImage(currentIndex + step);
-        }
-
-
-        // edited
-        // --- MOBILE MENU TOGGLE SCRIPT ---
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        const links = document.querySelectorAll('.nav-links li');
-
-        hamburger.addEventListener('click', () => {
-            // 1. Toggle the side menu
-            navLinks.classList.toggle('nav-active');
-
-            // 2. Animate the Links (Optional: nice fade-in effect)
-            links.forEach((link, index) => {
-                if (link.style.animation) {
-                    link.style.animation = '';
-                } else {
-                    // Stagger the animation so they appear one by one
-                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-                }
-            });
-
-            // 3. Burger Animation (Optional: turns lines into X)
-            hamburger.classList.toggle('toggle');
-        });
-
-        // 4. Close menu when a link is clicked
-        navLinks.addEventListener('click', () => {
-            navLinks.classList.remove('nav-active');
-            hamburger.classList.remove('toggle');
-        });
-
-    </script>
+    <script src="photos.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
